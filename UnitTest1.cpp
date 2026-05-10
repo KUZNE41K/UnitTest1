@@ -33,7 +33,6 @@ namespace UnitTest1
             Logger::WriteMessage(created ? L" Ветка создана" : L" Ветка НЕ создана");
             Assert::IsTrue(created, L"Ожидалось успешное создание ветки");
 
-            // cleanup
             if (created)
             {
                 bool deleted = threadController->deleteThread(id);
@@ -62,7 +61,6 @@ namespace UnitTest1
             Logger::WriteMessage(created ? L" Ветка создана (unexpected)" : L" Ветка НЕ создана (expected)");
             Assert::IsFalse(created, L"Ожидалось, что создание с пустым названием не будет успешным");
 
-            // cleanup if unexpectedly created
             if (created)
             {
                 threadController->deleteThread(id);
@@ -115,8 +113,6 @@ namespace UnitTest1
             Logger::WriteMessage(deleted ? L"Ветка удалена (unexpected)" : L"Ветка НЕ удалена (expected)");
             Assert::IsFalse(deleted, L"Ожидалось, что удаление с пустым id не выполнится");
         }
-
-        // --- Tests for updateThread ---
 
         TEST_METHOD(TestUpdateThread_Succeeds)
         {
